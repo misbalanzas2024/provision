@@ -6,7 +6,7 @@ services:
     build:
       context: ./docker/nginx
       args:
-        UID: $U_ID
+        UID: 1001
     ports:
       - 300:80
     volumes:
