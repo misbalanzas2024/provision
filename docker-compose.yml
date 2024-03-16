@@ -21,7 +21,7 @@ services:
     build:
       context: ./docker/php
       args:
-        UID: $U_ID
+        UID: 1001
     environment:
       PHP_IDE_CONFIG: serverName=Docker
       PHP_XDEBUG_ENABLED: 1
