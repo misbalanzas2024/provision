@@ -12,6 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # Paso para configurar PHP
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # Asegúrate de especificar la versión de PHP que necesitas
+          tools: php-cs-fixer # Esto instalará php-cs-fixer
+
+      # Paso para ejecutar php-cs-fixer
+      - name: Run PHP CS Fixer
+        run: php-cs-fixer fix --dry-run --diff --verbose
+        # Este comando solo verifica si hay errores de formato, sin aplicar cambios.
+        # Si encuentras errores y prefieres que se apliquen automáticamente, puedes quitar --dry-run.
+        # Sin embargo, en un flujo de CI, es mejor no aplicar cambios automáticamente sino corregirlos manualmente.
+
+      # Paso para desplegar en el servidor de desarrollo
       - name: Deploy to Development Server
         uses: appleboy/ssh-action@master
         with:
