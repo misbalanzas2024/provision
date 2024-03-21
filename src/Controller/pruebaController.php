@@ -1,3 +1,3 @@
 <?php
-$variable=234;
-    $variables2=876 ;
+$variable = 234;
+$variables2 = 876 ;
